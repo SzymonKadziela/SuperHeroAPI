@@ -80,3 +80,8 @@ D:\C#\SuperHeroAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runti
 D:\C#\SuperHeroAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\C#\SuperHeroAPI\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 D:\C#\SuperHeroAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\C#\SuperHeroAPI\obj\Debug\net6.0\staticwebassets\msbuild.SuperHeroAPI.Microsoft.AspNetCore.StaticWebAssets.props
+D:\C#\SuperHeroAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.SuperHeroAPI.props
+D:\C#\SuperHeroAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.SuperHeroAPI.props
+D:\C#\SuperHeroAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.SuperHeroAPI.props
+D:\C#\SuperHeroAPI\obj\Debug\net6.0\staticwebassets.pack.json

@@ -7,22 +7,14 @@ namespace SuperHeroAPI.Controllers
     [ApiController]
     public class SuperHeroController : ControllerBase
     {
-        private static List<SuperHero> heroes = new List<SuperHero>
-        {
-            new SuperHero {
-                Id = 2,
-                Name = "IronMan",
-                FirstName = "Tony",
-                LastName = "Stark",
-                Place = "Long Island"
-            }
-        };
         private readonly DataContext _context;
+
 
         public SuperHeroController(DataContext context)
         {
             _context = context;
         }
+        
 
         [HttpGet]
         public async Task<ActionResult<List<SuperHero>>> Get()
@@ -42,9 +34,21 @@ namespace SuperHeroAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<List<SuperHero>>> AddHero([FromBody]SuperHero hero)
         {
-            _context.SuperHeroes.Add(hero);
-            await _context.SaveChangesAsync();
-            return Ok(await _context.SuperHeroes.ToListAsync());
+            var myTransaction = _context.Database.BeginTransaction();
+            try
+            {
+                _context.SuperHeroes.Add(hero);
+                await _context.SaveChangesAsync();
+                myTransaction.CreateSavepoint("SavePoint1");
+                myTransaction.Commit();
+                return Ok(await _context.SuperHeroes.ToListAsync());
+            }
+            catch(Exception ex) 
+            {
+                await myTransaction.RollbackToSavepointAsync("SavePoint1");
+                return BadRequest(ex);
+            }
+
         }
 
         [HttpPut]
